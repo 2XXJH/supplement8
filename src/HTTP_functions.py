@@ -28,3 +28,13 @@ def get_request(url):
         raise Exception(f"Client error with status code: {status_code}")
 
     return status_code, response_text
+
+def get_beeceptor_info():
+    url = "https://echo.free.beeceptor.com"
+    response = requests.get(url)
+    if response.status_code != 200:
+        raise Exception("Failed to get a valid response.")
+    response_json = response.json()
+    postman_token = response_json.get('Postman-Token', '')
+    ip_address = response_json.get('ipAddress', '')
+    return postman_token, ip_address

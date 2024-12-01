@@ -1,6 +1,13 @@
 import pytest
 import requests
 from unittest.mock import patch
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
+from HTTP_functions import get_request
+
+
+
 
 # Test for get_request function
 def test_get_request():

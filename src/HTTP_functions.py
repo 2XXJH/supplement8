@@ -45,3 +45,11 @@ def get_beeceptor_info():
     postman_token = response_json.get('Postman-Token', '')
     ip_address = response_json.get('ipAddress', '')
     return postman_token, ip_address
+
+def post_beeceptor_hello():
+    url = "https://echo.free.beeceptor.com"
+    payload = {"hello": "world"}
+    response = requests.post(url, json=payload)
+    if response.status_code != 200:
+        raise Exception("Failed to send POST request.")
+    return response.json()

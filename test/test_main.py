@@ -6,6 +6,7 @@ import os
 sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'src')))
 from HTTP_functions import get_request
 from HTTP_functions import get_beeceptor_info
+from HTTP_functions import post_beeceptor_hello 
 
 def test_should_get_request():
     url = "https://jsonplaceholder.typicode.com/posts/1"  # A sample URL that returns JSON

@@ -9,7 +9,7 @@ from HTTP_functions import get_request
 
 
 
-# Test for get_request function
+#
 def test_get_request():
     url = "https://jsonplaceholder.typicode.com/posts/1"  # A sample URL that returns JSON
     status_code, response_text = get_request(url)
@@ -20,3 +20,15 @@ def test_get_request_error():
     url = "https://jsonplaceholder.typicode.com/invalid_url"
     with pytest.raises(Exception):
         get_request(url)
+
+@patch('requests.get')
+def test_get_beeceptor_info(mock_get):
+    mock_response = requests.Response()
+    mock_response.status_code = 200
+    mock_response._content = b'{"Postman-Token": "abcd1234", "ipAddress": "192.168.1.1"}'
+    mock_get.return_value = mock_response
+
+    postman_token, ip_address = get_beeceptor_info()
+
+    assert postman_token == "abcd1234"
+    assert ip_address == "192.168.1.1"

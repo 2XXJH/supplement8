@@ -47,6 +47,13 @@ def get_beeceptor_info():
     return postman_token, ip_address
 
 def post_beeceptor_hello():
+    """
+    Sends a POST request to https://echo.free.beeceptor.com with a JSON payload
+    containing {"hello": "world"}.
+
+    Returns:
+        dict: The JSON response from the server.
+    """
     url = "https://echo.free.beeceptor.com"
     payload = {"hello": "world"}
     response = requests.post(url, json=payload)

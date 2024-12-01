@@ -30,6 +30,13 @@ def get_request(url):
     return status_code, response_text
 
 def get_beeceptor_info():
+    """
+    Sends a GET request to https://echo.free.beeceptor.com and extracts 
+    the Postman-Token and IP address from the response.
+
+    Returns:
+        tuple: A tuple containing the Postman-Token (str) and the IP address (str).
+    """
     url = "https://echo.free.beeceptor.com"
     response = requests.get(url)
     if response.status_code != 200:
